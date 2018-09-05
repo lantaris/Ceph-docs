@@ -1,0 +1,27 @@
+# CEPH
+ceph -s				# Общий статус клайстера Ceph
+ceph status			# Общий статус клайстера Ceph
+ceph -w				# Мониторинг клайстера в реальном времени
+ceph health detail		# Детальный статус здоровья
+
+# Auth
+ceph auth list			# Список доступов
+
+# OSD
+ceph osd tree			# Структура клайстера
+ceph osd df  			# Текущее состояние OSD (веса, занятость, PGS)
+ceph osd dump			# Детальная информация о OSD
+ceph tell osd.<OSD Num> bench	# Проверка скорости определенного OSD
+
+# POOL
+ceph osd pool get <pool> all	# Настройки пула
+ceph pg dump pgs		# Дамп всех PGs
+ceph pg dump			# Статистика для групп мест размещения
+rbd du <pool>/<volume>		# Информация размер/занимаемый размер тома в RBD пуле
+rbd ls -l <pool>		# Содержимое пула
+ceph osd lspools		# Список пулов
+rados df 			# Сводная информация о размерах и свободном месте в пулах
+
+# MDS
+ceph mds stat
+ceph mds dump

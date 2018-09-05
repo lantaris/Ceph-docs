@@ -1,0 +1,23 @@
+#
+# Перезапуск монитора
+#
+
+systemctl restart ceph-mon.target
+
+#
+# Перезапуск всех OSD хоста
+#
+
+systemctl restart ceph-osd.target
+
+#
+# Перезапуск всех MGR хоста
+#
+
+systemctl restart ceph-mgr.target
+
+#
+# Остановка OSD на хосте
+#
+
+systemctl stop ceph-osd@<OSD Num>.service
