@@ -11,7 +11,8 @@
 	ceph osd out osd.<OSD Num>  
 
 
-### После эвакуации данных, если это требовалось, проверяем что данные эвакуировались "ceph osd safe-to-destroy <OSD Num>".
+### После эвакуации данных, если это требовалось, проверяем что данные эвакуировались 
+	ceph osd safe-to-destroy <OSD Num>
 ### Останавливаем на нужном хосте сбойный OSD.
 ### Проверяем "ceph osd status", что остановлен именно тот OSD
 	systemctl stop ceph-osd@<OSD Num>.service
