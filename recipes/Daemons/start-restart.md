@@ -1,5 +1,7 @@
 # Команды  управления демонами Ceph
 
+###
+
 ** Запуск/Остановка/Перезапуск монитора MON **
 
 	systemctl [start|stop|restart] ceph-mon.target
