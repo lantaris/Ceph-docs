@@ -1,6 +1,7 @@
-# Перевод кластера в режим обслуживания
+## Перевод кластера в режим обслуживания
 
-## Перевод в режим обслуживания.
+**Перевод в режим обслуживания**
+
 	ceph osd set noout
 	ceph osd set nobackfill
 	ceph osd set norecover
@@ -8,7 +9,8 @@
 	ceph osd set nodown
 	ceph osd set pause
 
-## Снятие режима обслуживания
+**Снятие режима обслуживания**
+
 	ceph osd unset noout
 	ceph osd unset nobackfill
 	ceph osd unset norecover

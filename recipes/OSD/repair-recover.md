@@ -1,7 +1,20 @@
-# Проверка и восстановление 
+## Проверка и восстановление 
 
-## Процесс полной проверки рекомендуется запускать в ненагруженное время
-	ceph osd scrub osd.<OSD Num>		# Запуск процесса проверки данных OSD или PG или "all" (Статус процесса "ceph health detail")
-	ceph osd deep-scrub osd.<OSD Num>	# Запуск процесса глубокой проверки данных OSD или PG или "all" (Статус процесса "ceph health detail")
-	ceph osd repair osd.<OSD Num>|PG_id	# Запуск процесса восстановления данных OSD или PG или "all" (Статус процесса "ceph health detail")
+### Процесс полной проверки рекомендуется запускать в ненагруженное время
+
+**Запуск процесса проверки данных OSD или PG или "all"**
+
+	ceph osd scrub <osd.(OSD Num)|PG Num|all> 
+
+**Запуск процесса глубокой проверки данных OSD или PG или "all")**
+
+	ceph osd deep-scrub <osd.(OSD Num)|PG Num|all>
+
+**Детальный статус ошибок можно посмотреть**
+	
+	ceph health detail
+
+**Запуск процесса восстановления данных**
+
+	ceph osd repair <osd.(OSD Num)|PG Num|all>
 
