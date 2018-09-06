@@ -1,44 +1,44 @@
-# Настройка CephFS (MDS).
+# РќР°СЃС‚СЂРѕР№РєР° CephFS (MDS).
 
-## Развертывание MDS демонов
+## Р Р°Р·РІРµСЂС‚С‹РІР°РЅРёРµ MDS РґРµРјРѕРЅРѕРІ
 
 	ceph-deploy mds create <Server1> <Server2> <Server3>
 
-## Создание пулов для хранения CephFS.
+## РЎРѕР·РґР°РЅРёРµ РїСѓР»РѕРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ CephFS.
 
-	# PGs расчитываются по формуле
+	# PGs СЂР°СЃС‡РёС‚С‹РІР°СЋС‚СЃСЏ РїРѕ С„РѕСЂРјСѓР»Рµ
 	#
 	#         (OSDs * 100)
 	# <PGs> = ------------
 	#          pool size
 	#
-	# (Результат должен быть округлен до ближайшей степени 2)
+	# (Р РµР·СѓР»СЊС‚Р°С‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРєСЂСѓРіР»РµРЅ РґРѕ Р±Р»РёР¶Р°Р№С€РµР№ СЃС‚РµРїРµРЅРё 2)
 	#
 	ceph osd pool create cephfs_data <PGs> [<PGP>]
 	ceph osd pool application enable cephfs_data cephfs
 	ceph osd pool create cephfs_metadata <PGs> [<PGP>]
 	ceph osd pool application enable cephfs_metadata cephfs
 
-## Создание пулов, которые требуются только при использовании NFS-Ganesha
+## РЎРѕР·РґР°РЅРёРµ РїСѓР»РѕРІ, РєРѕС‚РѕСЂС‹Рµ С‚СЂРµР±СѓСЋС‚СЃСЏ С‚РѕР»СЊРєРѕ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё NFS-Ganesha
 	ceph osd pool create nfs-ganesha 8                         
 	ceph osd pool application enable nfs-ganesha cephfs
 
-## Присвоение CephFS (MDS) пулов хранения данных/метаданных
+## РџСЂРёСЃРІРѕРµРЅРёРµ CephFS (MDS) РїСѓР»РѕРІ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С…/РјРµС‚Р°РґР°РЅРЅС‹С…
 
 	ceph fs new cephfs cephfs_metadata cephfs_data
 
-## Создание пользователя cephpf с правами для работы с томом и выгрузка ключа доступа
+## РЎРѕР·РґР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ cephpf СЃ РїСЂР°РІР°РјРё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‚РѕРјРѕРј Рё РІС‹РіСЂСѓР·РєР° РєР»СЋС‡Р° РґРѕСЃС‚СѓРїР°
 
 ceph auth get-or-create client.cephfs mon 'allow r' mds 'allow rw' osd 'allow rw pool=cephfs_data allow rw pool=nfs-ganesha' -o /etc/ceph/ceph.client.cephfs.keyring
 ceph auth get-key client.cephfs | tee /etc/ceph/client.cephfs.key
 
-##  Варианты монтирование CephFS
+##  Р’Р°СЂРёР°РЅС‚С‹ РјРѕРЅС‚РёСЂРѕРІР°РЅРёРµ CephFS
 
 	mount -t ceph <SrvMON1>,<SrvMON2>,<SrvMON3>:/ /mnt/mycephfs
 	mount -t ceph <SrvMON1>,<SrvMON2>,<SrvMON3>:/ /mnt/mycephfs -o name=admin,secret=<secret key>
 	mount -t ceph <SrvMON1>,<SrvMON2>,<SrvMON3>:/ /mnt/mycephfs -o name=admin,secretfile=/etc/ceph/client.cephfs.key
 	#
-	# Равнозначные команды
+	# Р Р°РІРЅРѕР·РЅР°С‡РЅС‹Рµ РєРѕРјР°РЅРґС‹
 	#
 	mount.ceph <SrvMON1>,<SrvMON2>,<SrvMON3>:/ /mnt/mycephfs
 	mount.ceph <SrvMON1>,<SrvMON2>,<SrvMON3>:/ /mnt/mycephfs -o name=admin,secret=<secret key>
