@@ -1,19 +1,21 @@
-# CEPH
-ceph -s				# Общий статус клайстера Ceph
-ceph status			# Общий статус клайстера Ceph
-ceph -w				# Мониторинг клайстера в реальном времени
-ceph health detail		# Детальный статус здоровья
+# Команды мониторинга кластера Ceph
 
-# Auth
-ceph auth list			# Список доступов
+## Мониторинг кластера
+	ceph -s				# Общий статус кластера Ceph
+	ceph status			# Общий статус кластера Ceph
+	ceph -w				# Мониторинг кластера в реальном времени
+	ceph health detail		# Детальный статус здоровья
 
-# OSD
-ceph osd tree			# Структура клайстера
+## Список доступов
+ceph auth list			
+
+## Мониторинг OSD и структуры
+ceph osd tree			# Структура кластера
 ceph osd df  			# Текущее состояние OSD (веса, занятость, PGS)
 ceph osd dump			# Детальная информация о OSD
 ceph tell osd.<OSD Num> bench	# Проверка скорости определенного OSD
 
-# POOL
+## Пулы
 ceph osd pool get <pool> all	# Настройки пула
 ceph pg dump pgs		# Дамп всех PGs
 ceph pg dump			# Статистика для групп мест размещения
@@ -22,6 +24,6 @@ rbd ls -l <pool>		# Содержимое пула
 ceph osd lspools		# Список пулов
 rados df 			# Сводная информация о размерах и свободном месте в пулах
 
-# MDS
+## CephFS (MDS)
 ceph mds stat
 ceph mds dump
