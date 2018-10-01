@@ -165,7 +165,7 @@ HostedEngine хранилищем мы обеспечили, но виртуал
 
 **(запускаем на любой из admin нод кластера Ceph):**
 
-	ceph auth get-or-create client.cephfs mon 'allow r' mds 'allow rw' osd 'allow rw pool=cephfs_data allow rw pool=nfs-ganesha' -o /etc/ceph/ceph.client.cephfs.keyring
+	ceph auth get-or-create client.cephfs mon 'allow r' mds 'allow rw' osd 'allow rw pool=cephfs_data, allow rw pool=nfs-ganesha' -o /etc/ceph/ceph.client.cephfs.keyring
 	ceph auth get-key client.cephfs | tee /etc/ceph/client.cephfs.key
 
 Ключи для пользователя 'cephfs' нам нужны на всех серверах, копируем их.
