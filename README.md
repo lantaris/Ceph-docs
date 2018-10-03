@@ -19,7 +19,7 @@
 **recipes - различные рецепты по Ceph**
 
 	Daemons - Управление сервисами Ceph
-	MDS		- Управление CephFS (MDS)
+	MDS	    - Управление CephFS (MDS)
 
 **Monitoring - способы и методы мониторинга компонентов Ceph**
 
