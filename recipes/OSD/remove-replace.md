@@ -30,6 +30,9 @@
 
 	ceph osd purge osd.<OSD Num>
 
+**Удаление OSD из CRUSHMAP(не обязательно, предыдущая команда удаляет OSD из CRUSHMAP)**
+
+        ceph osd crush remove osd.<OSD Num>
 
 **Удаляем остатки OSD**
 

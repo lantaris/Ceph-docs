@@ -16,6 +16,7 @@
 	ceph osd tree					# Структура кластера
 	ceph osd df  					# Текущее состояние OSD (веса, занятость, PGS)
 	ceph osd dump					# Детальная информация о OSD
+	ceph osd perf					# Статистика быстродействия OSD
 	ceph tell osd.<OSD Num> bench	# Проверка скорости определенного OSD
 
 **Пулы**
