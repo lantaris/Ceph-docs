@@ -4,6 +4,9 @@
 
 	ceph -s					# Общий статус кластера Ceph
 	ceph status				# Общий статус кластера Ceph
+	ceph quorum_status |jq		# Статус кворума
+	ceph mon_status | jq		# Статус мониторов
+	ceph mon dump                           # Информация о мониторах
 	ceph -w					# Мониторинг кластера в реальном времени
 	ceph health detail		# Детальный статус здоровья
 
@@ -33,3 +36,4 @@
 
 	ceph mds stat
 	ceph mds dump
+	ceph fs dump
