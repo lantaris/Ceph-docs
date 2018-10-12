@@ -17,3 +17,13 @@
 	ceph osd unset norebalance
 	ceph osd unset nodown
 	ceph osd unset pause
+
+**При выводе одной из нод кластера в обслуживание нужно установить**
+
+	ceph osd set noout	  - Не уносить данные с OSD
+	ceph osd set norebalance  - Не производить ребаланс кластера
+
+**После возврата ноды в кластер нужно снять ранее установленные флаги**
+
+	ceph osd unset noout 
+	ceph osd unset norebalance
