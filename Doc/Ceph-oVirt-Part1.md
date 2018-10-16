@@ -1,6 +1,6 @@
 ![](https://ovirt.org/images/wiki/Cinder_flow_illustration.png?1478101463)
 
-# Настройка SDS Ceph в распределенной системе oVirt 4.1 #
+# Настройка SDS Ceph в распределенной системе oVirt 4.1/4.2 #
 
 ## (Часть №1. NFS-Ganesha) 
 
