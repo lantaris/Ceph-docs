@@ -4,11 +4,12 @@
 
 	ceph -s					# Общий статус кластера Ceph
 	ceph status				# Общий статус кластера Ceph
-	ceph quorum_status |jq		# Статус кворума
-	ceph mon_status | jq		# Статус мониторов
+	ceph quorum_status |jq			# Статус кворума
+	ceph mon_status | jq			# Статус мониторов
+	ceph mon stat				# Статус мониторов
 	ceph mon dump                           # Информация о мониторах
 	ceph -w					# Мониторинг кластера в реальном времени
-	ceph health detail		# Детальный статус здоровья
+	ceph health detail			# Детальный статус здоровья
 
 **Список доступов(пользователей)**
 
@@ -20,17 +21,17 @@
 	ceph osd df  					# Текущее состояние OSD (веса, занятость, PGS)
 	ceph osd dump					# Детальная информация о OSD
 	ceph osd perf					# Статистика быстродействия OSD
-	ceph tell osd.<OSD Num> bench	# Проверка скорости определенного OSD
+	ceph tell osd.<OSD Num> bench			# Проверка скорости определенного OSD
 
 **Пулы**
 
-	ceph osd pool get <pool> all	# Настройки пула
+	ceph osd pool get <pool> all			# Настройки пула
 	ceph pg dump pgs				# Дамп всех PGs
 	ceph pg dump					# Статистика для групп мест размещения
-	rbd du <pool>/<volume>			# Информация размер/занимаемый размер тома в RBD пуле
+	rbd du <pool>/<volume>				# Информация размер/занимаемый размер тома в RBD пуле
 	rbd ls -l <pool>				# Содержимое пула
 	ceph osd lspools				# Список пулов
-	rados df 						# Сводная информация о размерах и свободном месте в пулах
+	rados df 					# Сводная информация о размерах и свободном месте в пулах
 
 **CephFS (MDS)**
 
